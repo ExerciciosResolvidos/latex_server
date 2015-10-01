@@ -1,0 +1,70 @@
+<p>Seja $p$ uma probabilidade sobre um espaço amostral finito e equiprovável, $\Omega$. Se $A$ e $B$ são eventos de $\Omega$ tais que $P\left(  A\right)=\frac{1}{2}, P\left(  B\right)=\frac{1}{3} \text{ e } P\left(  A\cap B\right)=</br>\frac{1}{4}$, as probabilidade dos eventos $A\backslash B$, $A\cup B$ e $A^{c}\cup B^{c}$ são, respectivamente:</br>
+</p>
+<p>
+	a) $\dfrac{1}{4},\dfrac{5}{6}\text{ e }\dfrac{1}{4}$</br>
+	b) $\dfrac{1}{6},\dfrac{5}{6}\text{ e }\dfrac{1}{4}$</br>
+	c) $\dfrac{1}{6},\dfrac{7}{12}\text{ e }\dfrac{3}{4}$</br>
+	d) $\dfrac{1}{3},\dfrac{5}{6}\text{ e }\dfrac{1}{3}$</br>
+	e) $\dfrac{1}{4},\dfrac{7}{12}\text{ e }\dfrac{3}{4}$</br>
+</p>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<p>levantado em http://localhost:8080 </p>
+<textarea id="latex-code" ></textarea> 
+<div id="display">
+</div>
+
+<script>
+function sanitize_latex(latex){
+	// remover whitespace
+	// latex = latex.replace(/[\s,\t," ",\n]/gm,"");
+	//remove breaklines
+	latex = latex.replace(/(\r\n|\n|\r|(<\/?br\/?>))/gm,"");
+	return latex;
+}
+
+function render_formulas(){
+
+	$("[data-equation]").each(function(i, item){
+		var latex = $(item).data("equation");
+		latex = sanitize_latex(latex);
+		var url = "http://localhost:8080/formula/"+ encodeURI(latex)+"/size/5";
+		var $tag_image = $("<img>").load( function() {
+			var height = $(this).height();
+			if(height > 30) $(item).css({position: "relative", top: "15px"})
+	  		console.log($(this).height());
+		});	
+
+		$tag_image.attr("src",url);
+		$(item).html($tag_image);
+	});
+
+
+}
+
+$("#latex-code").on("keyup", function(e){
+	var latex = $(this).val();
+	latex = sanitize_latex(latex);
+	console.log(latex);
+	var url = "http://localhost:8080/formula/"+ encodeURI(latex)+"/size/5";
+	var $tag_image = $("<img>");
+	$tag_image.attr("src",url);
+	$("#display").html($tag_image);
+
+});
+
+
+
+$("p").each(function(i, item){
+	html = $(item).html();
+	var i = 0
+	html = html.replace(/(\$.*?\$)/g,function(s,m1){i++;return "<span class='inline-equation' data-equation='"+m1.replace(/\$/g,"")+"'>"+m1+"</span>";});
+	$(item).html(html);
+
+
+});
+
+
+
+render_formulas();
+</script>
