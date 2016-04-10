@@ -28,7 +28,7 @@ function render_formulas(){
 	$("[data-equation]").each(function(i, item){
 		var latex = $(item).data("equation");
 		latex = sanitize_latex(latex);
-		var url = "http://localhost:8080/formula/"+ encodeURI(latex)+"/size/5";
+		var url = "http://localhost:4567/formula/"+ encodeURI(latex)+"/size/5";
 		var $tag_image = $("<img>").load( function() {
 			var height = $(this).height();
 			if(height > 30) $(item).css({position: "relative", top: "15px"})
@@ -46,7 +46,7 @@ $("#latex-code").on("keyup", function(e){
 	var latex = $(this).val();
 	latex = sanitize_latex(latex);
 	console.log(latex);
-	var url = "http://localhost:8080/formula/"+ encodeURI(latex)+"/size/5";
+	var url = "http://localhost:4567/formula/"+ encodeURI(latex)+"/size/5";
 	var $tag_image = $("<img>");
 	$tag_image.attr("src",url);
 	$("#display").html($tag_image);
