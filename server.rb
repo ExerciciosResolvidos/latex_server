@@ -23,7 +23,8 @@ class Server
 
     # image_path = resolve_path formula, size
 
-    if Env == "production"
+
+    Thread.new {
       image_path = "#{ROOT_LIB}/public/formula/#{formula}/size/#{size}"
 
       # gambiarra para caminho com /current/ no capistrano
@@ -31,13 +32,12 @@ class Server
         FileUtils.mkdir_p File.dirname( image_path)
         FileUtils.cp(tmp_file.path, image_path)
       rescue => e
-        image_path = tmp_file.path
-      end
-    else
-      image_path = tmp_file.path
-    end
 
-    [status, { "Content-Type" => "image/png" }, open(image_path) ]
+      end
+    }.run()
+    # if Env == "production"
+
+    [status, { "Content-Type" => "image/png" }, tmp_file ]
   end
 
 end
