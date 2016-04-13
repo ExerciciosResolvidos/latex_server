@@ -25,15 +25,11 @@ class Server
 
 
     Thread.new {
-      image_path = "#{ROOT_LIB}/public/formula/#{formula}/size/#{size}"
-
-      # gambiarra para caminho com /current/ no capistrano
-      begin
+      
+        image_path = "#{ROOT_LIB}/public/formula/#{formula}/size/#{size}"
         FileUtils.mkdir_p File.dirname( image_path)
         FileUtils.cp(tmp_file.path, image_path)
-      rescue => e
 
-      end
     }.run()
     # if Env == "production"
 
