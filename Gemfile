@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rack'
-gem "latex_to_png", '0.0.3'
+gem "latex_to_png", '0.0.4'
 # gem "latex_to_png", :path => "../latex_to_png/"
 
 group :test,:development do

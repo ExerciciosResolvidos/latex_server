@@ -25,7 +25,6 @@ class Server
 
 
     Thread.new {
-      
         image_path = "#{ROOT_LIB}/public/formula/#{formula}/size/#{size}"
         FileUtils.mkdir_p File.dirname( image_path)
         FileUtils.cp(tmp_file.path, image_path)
