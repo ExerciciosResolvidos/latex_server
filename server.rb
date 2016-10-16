@@ -10,7 +10,7 @@ class Server
     formula=  URI.unescape(env["PATH_INFO"].gsub(/.*formula\//, "").gsub(/\/size.*/,""))
     size =  env["PATH_INFO"].gsub(/.*size\//,"").to_i || 10
 
-# debugger
+  # debugger
     begin
       tmp_file = LatexToPng::Convert.new(formula: formula,size: size ).to_png
       status = 200
@@ -25,10 +25,9 @@ class Server
 
 
     Thread.new {
-        image_path = "#{ROOT_LIB}/public/formula/#{formula}/size/#{size}"
-        FileUtils.mkdir_p File.dirname( image_path)
-        FileUtils.cp(tmp_file.path, image_path)
-
+      image_path = "#{ROOT_LIB}/public/formula/#{formula}/size/#{size}"
+      FileUtils.mkdir_p File.dirname( image_path)
+      FileUtils.cp(tmp_file.path, image_path)
     }.run()
     # if Env == "production"
 
