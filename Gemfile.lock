@@ -51,6 +51,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler
   byebug
   capistrano (~> 3.4.0)
   capistrano-bundler (~> 1.1.2)
@@ -61,4 +62,4 @@ DEPENDENCIES
   rspec
 
 BUNDLED WITH
-   1.11.2
+   1.13.5
