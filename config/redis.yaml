@@ -1,0 +1,6 @@
+development: 
+  host: "localhost"
+test:
+  host: "localhost"
+production:
+  host: "10.128.1.129"

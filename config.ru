@@ -6,4 +6,4 @@ require "latex_to_png"
 require "#{ROOT}/server"
 
 Env = ENV['RACK_ENV'] || 'development'
-run Server.new
+run Server.new Env
