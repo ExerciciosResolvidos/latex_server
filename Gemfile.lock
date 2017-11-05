@@ -26,6 +26,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
+    newrelic_rpm (4.5.0.337)
     rack (1.5.2)
     rake (10.4.2)
     redis (4.0.1)
@@ -59,6 +60,7 @@ DEPENDENCIES
   capistrano-passenger
   capistrano-rvm
   latex_to_png (= 0.0.4)
+  newrelic_rpm
   rack
   redis
   rspec

@@ -5,6 +5,7 @@ gem 'rack'
 gem "latex_to_png", '0.0.4'
 gem "redis"
 # gem "latex_to_png", :path => "../latex_to_png/"
+gem 'newrelic_rpm'
 
 group :test,:development do
   gem 'byebug'
