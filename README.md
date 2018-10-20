@@ -33,6 +33,9 @@ $ sudo apt-get install imagemagick libmagickcore-dev
 $ sudo apt-get install texlive texlive-latex-extra
 
 $ sudo apt-get install texinfo
+
+$ sed -i 's/<policy domain="coder" rights="none" pattern="PS" \/>/<policy domain="coder" rights="read|write" pattern="PS" \/>/g' /etc/ImageMagick-6/policy.xml
+
 ```
 
 Install gems of project
